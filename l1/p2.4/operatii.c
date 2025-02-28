@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <math.h>
-#include <operatii.h>
+#include "operatii.h"
 
-double integralaDreptunghi(double a, double b, int n) {
+double integralaDreptunghi(double a, double b, int n, double (*pf)(double)) {
     double suma = 0.0;
     double dx = (b - a) / n;
     
     for (int i = 0; i < n; i++) {
-        double x_mijloc = a + (i + 0.5) * dx; // Folosim metoda dreptunghiului mijlociu
-        suma += f(x_mijloc);
+        double x_mijloc = a + (i + 0.5) * dx; 
+        suma += pf(x_mijloc);
     }
     
     return suma * dx;
@@ -51,18 +51,18 @@ double integralaTrapez(double a, double b, unsigned int n, double (*pf)(double))
         return sum;
 }
 
-double i(int x) {
+double i(double x) {
     return exp(-pow(x,2));
 }
-double ii(int x) {
+double ii(double x) {
     return x;
 }
-double iii(int x) {
+double iii(double x) {
     return x * x;
 }
-double iv(int x) {
+double iv(double x) {
     return sqrt(1 + 1 / x);
 }
-double v(int x) {
+double v(double x) {
     return (x / (1 + x));
 }
