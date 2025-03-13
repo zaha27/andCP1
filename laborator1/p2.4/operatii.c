@@ -24,7 +24,6 @@ double integralaSimpson(double a, double b, unsigned int n, double (*pf)(double)
 
     for (int i = 1; i < n; i++) {
         double x = a + i * h;
-        
         if (i % 2 == 0) {
             sum += 2 * pf(x);
         } else {
